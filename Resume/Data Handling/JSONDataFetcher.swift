@@ -54,15 +54,16 @@ struct GistResumeDataFetcher: JSONDataFetcher {
 
     func fetch<Resume>(type: Resume.Type, completion: @escaping (Result<Resume, Error>) -> Void) where Resume: Decodable {
         let task = URLSession.shared.dataTask(with: dataURL) { data, response, error in
-            DispatchQueue.main.async {
-                completion( Result {
-                    if let error = error { throw(error) }
-                    guard let httpResponse = response as? HTTPURLResponse else { throw ResumeError.invalidResponse }
-                    guard (200...299).contains(httpResponse.statusCode) else { throw ResumeError.errorStatus(httpResponse.statusCode) }
-                    guard let data = data else { throw ResumeError.missingResource }
+            let result: Result<Resume, Error> = Result {
+                if let error = error { throw(error) }
+                guard let httpResponse = response as? HTTPURLResponse else { throw ResumeError.invalidResponse }
+                guard (200...299).contains(httpResponse.statusCode) else { throw ResumeError.errorStatus(httpResponse.statusCode) }
+                guard let data = data else { throw ResumeError.missingResource }
 
-                    return try JSONDecoder().decode(Resume.self, from: data)
-                })
+                return try JSONDecoder().decode(Resume.self, from: data)
+            }
+            DispatchQueue.main.async {
+                completion(result)
             }
         }
         task.resume()

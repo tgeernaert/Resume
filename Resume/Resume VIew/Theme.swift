@@ -22,6 +22,12 @@ protocol Theme {
 
     /// The background color to be used by to the host container
     var background: UIColor { get }
+
+    /// The forground color to be used by to the host container
+    var forground: UIColor { get }
+
+    /// The forground color for buttons and other action callouts
+    var action: UIColor { get }
 }
 
 
@@ -83,7 +89,8 @@ struct DefaultTheme: Theme {
     }
 
     var background: UIColor = .white
-
+    var forground: UIColor = .darkGray
+    var action: UIColor = .blue
 }
 
 struct AlternativeTheme: Theme {
@@ -144,4 +151,6 @@ struct AlternativeTheme: Theme {
     }
 
     var background: UIColor = .darkGray
+    var forground: UIColor = .lightGray
+    var action: UIColor = .yellow
 }

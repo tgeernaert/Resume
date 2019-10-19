@@ -21,8 +21,10 @@ class ResumeViewController: UIViewController {
         bindViewModel()
     }
 
+    @IBOutlet weak var themeButton: UIBarButtonItem!
+
     // MARK: - Actions
-    @IBAction func didTapView() {
+    @IBAction func changeTheme() {
         if viewModel.theme as? DefaultTheme == nil {
             viewModel.theme = DefaultTheme()
         } else {
@@ -47,6 +49,9 @@ class ResumeViewController: UIViewController {
 
         let themeDidChange: (Theme) -> Void = { [unowned self] theme in
             self.view.backgroundColor = theme.background
+            self.navigationController?.navigationBar.barTintColor = theme.background
+            self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.forground]
+            self.themeButton.tintColor = theme.action
             self.view.setNeedsDisplay()
         }
 
