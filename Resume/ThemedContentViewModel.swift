@@ -9,57 +9,41 @@
 import Foundation
 import UIKit
 
-///
-class DescribedViewModel: ResumeViewModel, DecribedViewProvider {
-
-    init(bindings: ResumeViewBindings) {
+/// The DescripedViewModel is intended to provide a view heirarchy from a JSON data source.
+class DescribedViewModel: ThemedContentViewModel, DecribedViewProvider {
+    /// initializer that inforces injection of dependacies, so that this can be uint tested
+    ///
+    /// The dataFetch, which results in the subsequent callback to contentViewDidChange, is triggered imediately on construction.
+    ///
+    /// - parameter bindings: A ResumeViewBindings structure, which defines the output callbacks
+    /// - parameter dataFetcher: Fetches JSON data that will be parsed into the appropiate type
+    /// - parameter notificationCenter: the notification center tha will listen for dynamic type size changes.  Injected so that unit tests can controll obsevation when run in parallel
+    init(bindings: ThemedContentViewBindings,
+         dataFetcher: JSONDataFetcher,
+         notificationCenter: NotificationCenter = NotificationCenter.default) {
+        self.dataFetcher = dataFetcher
         themeDidChange = bindings.themeDidChange
         contentViewDidChange = bindings.contentViewDidChange
 
-        updateDescribedView()
+        notificationCenter.addObserver(forName: UIContentSizeCategory.didChangeNotification,
+                                       object: nil, queue: .main) {[weak self] _ in self?.updateDescribedView() }
 
-        NotificationCenter.default.addObserver(forName: UIContentSizeCategory.didChangeNotification,
-                                               object: nil, queue: .main) {_ in
-            self.updateDescribedView()
-        }
-
+        createViewDescriptor()
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    //MARK: - ResumeViewModel protocol
-    func handleTapGesture() {
-    }
-
-
-    //MARK: - DecribedViewProvider
-    func loadViewDescriptor() -> ViewDescriptor? {
-        do {
-
-            guard let url = Bundle.main.url(forResource: "resume", withExtension: "json") else {
-                throw ResumeError.missingResource
+    // MARK: - DecribedViewProvider
+    func createViewDescriptor() {
+        dataFetcher.fetch(type: ViewType.self) {
+            switch $0 {
+            case .success(let viewType):
+                self.viewDescriptor = viewType.descriptor
+            case .failure(let error):
+                print( error )
             }
-
-            return try JSONDecoder().decode(ViewType.self, from: Data(contentsOf: url)).descriptor
-        } catch {
-            print(error)
-            return nil
         }
     }
 
-    func updateDescribedView() {
-        if let view = viewDescriptor?.view(theme) {
-            contentViewDidChange(view)
-        }
-    }
-
-    // MARK: - Private
-    private var themeDidChange: (Theme) -> Void = {_ in}
-    private var contentViewDidChange: (UIView) -> Void = {_ in}
-    private lazy var viewDescriptor: ViewDescriptor? = loadViewDescriptor()
-
+    // MARK: - ThemedContentViewModel
     var theme: Theme = DefaultTheme() {
         didSet {
             updateDescribedView()
@@ -67,30 +51,55 @@ class DescribedViewModel: ResumeViewModel, DecribedViewProvider {
         }
     }
 
+    // MARK: - Private
+    private func updateDescribedView() {
+        if let view = viewDescriptor?.view(theme) {
+            contentViewDidChange(view)
+        }
+    }
 
+    internal let themeDidChange: (Theme) -> Void
+    internal let contentViewDidChange: (UIView) -> Void
+    private let dataFetcher: JSONDataFetcher
+    private var viewDescriptor: ViewDescriptor? {
+        didSet {
+            updateDescribedView()
+        }
+    }
 }
 
-enum ResumeError: Error {
-    case missingResource
-}
-
-protocol ResumeViewModel {
+/// Define the inteface to themed view model
+protocol ThemedContentViewModel {
+    /// The theme to use when creating views
     var theme: Theme { get set }
+    /// Let the caller know that the theme changed
+    /// - parameter Theme: the theme that is to be applied
+    var themeDidChange: (Theme) -> Void { get }
+
+    /// Let the caller know that the contentView changed
+    /// - parameter UIView: the view that should replacing the previous content
+    var contentViewDidChange: (UIView) -> Void  { get }
 }
 
-struct ResumeViewBindings {
+/// Enforces injection of contracted communication through required callbacks
+struct ThemedContentViewBindings {
+    /// Let the caller know that the theme changed
+    /// - parameter Theme: the theme that is to be applied
     var themeDidChange: (Theme) -> Void = {_ in}
+
+    /// Let the caller know that the contentView changed
+    /// - parameter UIView: the view that should replacing the previous content
     var contentViewDidChange: (UIView) -> Void = {_ in}
 }
 
+/// Defines the interface to use ViewDescriptor loading
 protocol DecribedViewProvider {
-    func loadViewDescriptor() -> ViewDescriptor?
-    func updateDescribedView()
+    /// Loads the data with the provided data fetcher and decodes that into ViewDescriptor
+    func createViewDescriptor()
 }
 
 extension ViewDescriptor {
-
-    /// The view builder for the view descriptor
+    // MARK: - ViewDescriptor
     func view(_ theme: Theme = DefaultTheme()) -> UIView {
         switch self.viewType {
         case .body, .bullet, .heading, .subheading, .title:

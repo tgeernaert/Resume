@@ -9,20 +9,31 @@
 import Foundation
 import UIKit
 
+/// Allow description of a view heirarchy in a JSON file
 protocol ViewDescriptor: Decodable {
+    /// The view builder for the view descriptor
+    /// - parameter theme: Defines styling to be applied when building the views
     func view(_ theme: Theme) -> UIView
+
+    ///  Access to the ViewType for the view descriptor
     var viewType: ViewType { get }
 }
 
+///  ViewDescriptors that can provide text to be displayed in the view that the describe
 protocol TextProviding {
+    /// The text to be displayed in the view
     var text: String { get }
+    /// The alignment to be used for the text
     var alignment: NSTextAlignment? { get }
 }
 
+///  ViewDescriptors that can provide attributed text to be displayed in the view that the describe
 protocol AttributedTextProviding {
+    /// The text with attribues to be displayed in the view
     var attributedText: NSAttributedString { get }
 }
 
+/// A collection of subviews, can be either verticle or horizontal
 struct Stack: ViewDescriptor {
     let subviews: [ViewType]
     let axis: NSLayoutConstraint.Axis
@@ -51,6 +62,7 @@ extension NSLayoutConstraint.Axis: Decodable {
     }
 }
 
+/// A view that contains text with Title styling from the Theme
 struct Title: ViewDescriptor, TextProviding {
     let text: String
     let alignment: NSTextAlignment?
@@ -61,6 +73,7 @@ struct Title: ViewDescriptor, TextProviding {
 
 }
 
+/// A view that contains text with Heading styling from the Theme
 struct Heading: ViewDescriptor, TextProviding {
     let text: String
     let alignment: NSTextAlignment?
@@ -70,6 +83,7 @@ struct Heading: ViewDescriptor, TextProviding {
     }
 }
 
+/// A view that contains text with Subheading styling from the Theme
 struct Subheading: ViewDescriptor, TextProviding {
     let text: String
     let alignment: NSTextAlignment?
@@ -79,6 +93,7 @@ struct Subheading: ViewDescriptor, TextProviding {
     }
 }
 
+/// A view that contains text with Body styling from the Theme
 struct Body: ViewDescriptor, TextProviding {
     let text: String
     let alignment: NSTextAlignment?
@@ -88,6 +103,7 @@ struct Body: ViewDescriptor, TextProviding {
     }
 }
 
+/// A view that contains bulletted text with Bullet styling from the Theme
 struct Bullet: ViewDescriptor, AttributedTextProviding {
     let text: String
     let alignment: NSTextAlignment?
@@ -131,6 +147,7 @@ extension NSTextAlignment: Decodable {
     }
 }
 
+/// Defines a view that provide spaces in the view heirarchy
 struct Space: ViewDescriptor {
     let value: SpaceValue
 

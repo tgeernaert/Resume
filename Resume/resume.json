@@ -75,7 +75,9 @@
                     {"subheading": {"text": "BCIT — Software Systems Development (Honours)"}},
                     {"body": {"text": "1999", "alignment": "right"}}
                 ]
-            }}
+            }},
+            {"space": {"value": 20}},
+            {"body": {"text": "* This is the bundled version of the resume", "alignment": "right"}}
         ]
     }
 }

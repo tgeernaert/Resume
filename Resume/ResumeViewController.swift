@@ -40,9 +40,9 @@ class ResumeViewController: UIViewController {
         scrollView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor).isActive = true
-
     }
 
+    // Create all the ResumeViewBinding closures to be injected into the ViewModel
     private func bindViewModel() {
 
         let themeDidChange: (Theme) -> Void = { [unowned self] theme in
@@ -54,8 +54,10 @@ class ResumeViewController: UIViewController {
             self.replaceScrollableContent($0)
         }
 
-        viewModel = DescribedViewModel(bindings: ResumeViewBindings(themeDidChange: themeDidChange,
-                                                                    contentViewDidChange: contentDidChange))
+        let dataFetcher = GistResumeDataFetcher()
+        viewModel = DescribedViewModel(bindings: ThemedContentViewBindings(themeDidChange: themeDidChange,
+                                                                           contentViewDidChange: contentDidChange),
+                                       dataFetcher: dataFetcher)
     }
 
     private func replaceScrollableContent(_ view: UIView) {
@@ -72,6 +74,6 @@ class ResumeViewController: UIViewController {
         contentView = view
     }
 
-    private var viewModel: ResumeViewModel!
+    private var viewModel: ThemedContentViewModel!
 }
 

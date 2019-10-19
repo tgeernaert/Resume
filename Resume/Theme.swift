@@ -9,10 +9,18 @@
 import Foundation
 import UIKit
 
+/// Interface for defining the theme for a view heirarchy created from ViewDescriptors.
 protocol Theme {
+    /// The font provided to each ViewType
     func font(view: ViewType) -> UIFont?
+
+    /// The forground (Font) color provided to each ViewType
     func forground(view: ViewType) -> UIColor
+
+    /// The bacground (View) color provided to each ViewType
     func background(view: ViewType) -> UIColor
+
+    /// The background color to be used by to the host container
     var background: UIColor { get }
 }
 
