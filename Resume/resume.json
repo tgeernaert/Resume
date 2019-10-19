@@ -1,18 +1,18 @@
 {"stack": {
         "axis": "verticle",
         "subviews": [
-            {"title": { "text": "Terrence Geernaert" }},
+            {"space": {"value": 20}},
+            {"title": { "text": "Terrence Geernaert"}},
             {"stack": {
                 "axis": "horizontal",
                 "subviews": [
-                    {"body": {"text": "778.229.0717"}},
                     {"body": {"text": "tgeernaert@mac.com"}},
-                    {"body": {"text": "13045 239B Street, Maple Ridge, BC, Canada"}}
+                    {"body": {"text": "778.229.0717", "alignment": "right"}}
                 ]
             }},
             {"space": {"value": 20}},
             {"heading": {"text": "Expert Mobile Software Developer"}},
-            {"body": {"text": "Passionate developer with 20 years of experience in the Apple ecosystem. A force multiplier, driving completion by helping everyone become more efficient.  Strategic decision maker with an affinity for supporting sales and marketing efforts. Conscientious leader that always looks for the simplest, maintainable solution."}},
+            {"body": {"text": "Passionate developer with 20 years of experience in the Apple ecosystem. A force multiplier, driving completion by helping everyone become more efficient."}},
             {"space": {"value": 20}},
             {"heading": {"text": "Technical Skills"}},
             {"bullet": {"text": "Languages: Swift, Objective-C, C/C++, TypeScript"}},
@@ -26,60 +26,54 @@
             {"stack": {
                 "axis": "horizontal",
                 "subviews": [
-                    {"body": {"text": "Development Manager"}},
-                    {"space": {"value": "flex"}},
-                    {"body": {"text": "2006 - present"}}
+                    {"subheading": {"text": "Development Manager"}},
+                    {"body": {"text": "2006 - present", "alignment": "right"}}
                 ]
             }},
-            {"body": {"text": "Responsible for developers, and processes with a focus on productivity. Designed and maintain a comprehensive employee skills assessment program. Established mentorship program to increase knowledge sharing. Directly involved in preparing Atimi’s SR&ED claims worth over $1,000,000 a year. Supported the sales team with design and estimation for more than $10,000,000 in sales."}},
+            {"body": {"text": "Responsible for developers, and processes with a focus on productivity. Designed and maintain a comprehensive employee skills assessment program. Established mentorship program to increase knowledge sharing. Directly involved in preparing Atimi’s SR&ED claims worth over $1,000,000 a year. Supported the sales team with design and estimation for more than $10,000,000 in sales.", "alignment": "justified"}},
             {"space": {"value": 20}},
             {"stack": {
                 "axis": "horizontal",
                 "subviews": [
-                    {"body": {"text": "Senior Development Lead"}},
-                    {"space": {"value": "flex"}},
-                    {"body": {"text": "2003 - present"}}
+                    {"subheading": {"text": "Senior Development Lead"}},
+                    {"body": {"text": "2003 - present", "alignment": "right"}}
                 ]
             }},
-            {"body": {"text": "Lead countless projects during my time with Atimi.  Over 70% of the apps I developed were featured on the AppStore including titles like NYTimes, ESPN ScoreCenter, Audible and ANZ.  Under my direction, Atimi has stayed in a sweet spot on the technology curve.  We advised clients to avoid premature adoption and to design based on what’s best for customers and their brand by leveraging strengths of each platform, be it iOS, Android, Windows or web.  Besides architecture and coding, I am often hired to mentor  and advise on how to create long term strategies, including hiring developers who are capable of keeping up the quality bar set out by my initial development work. As the most senior developer at Atimi for the last 10 years I was instrumental in Atimi being accepted as one of only a handful of small service companies in the Apple Mobility Partnership Program (https://www.apple.com/ca/business/partners/)."}},
+            {"body": {"text": "Lead countless projects during my time with Atimi.  Over 70% of the apps I developed were featured on the AppStore including titles like NYTimes, ESPN ScoreCenter, Audible and ANZ.  Under my direction, Atimi has stayed in a sweet spot on the technology curve.  We advised clients to avoid premature adoption and to design based on what’s best for customers and their brand by leveraging strengths of each platform, be it iOS, Android, Windows or web.  Besides architecture and coding, I am often hired to mentor  and advise on how to create long term strategies, including hiring developers who are capable of keeping up the quality bar set out by my initial development work. As the most senior developer at Atimi for the last 10 years I was instrumental in Atimi being accepted as one of only a handful of small service companies in the Apple Mobility Partnership Program (https://www.apple.com/ca/business/partners/).", "alignment": "justified"}},
             {"space": {"value": 20}},
             {"subheading": {"text": "Affiance Group (formerly Merlin Software Technologies)"}},
             {"stack": {
                 "axis": "horizontal",
                 "subviews": [
-                    {"body": {"text": "Developer"}},
-                    {"space": {"value": "flex"}},
-                    {"body": {"text": "2001—2002, 2003"}}
+                    {"subheading": {"text": "Developer"}},
+                    {"body": {"text": "2001—2002, 2003", "alignment": "right"}}
                 ]
             }},
-            {"body": {"text": "Created Mac applications using CodeWarrior, PowerPlant, and C/C++ over AppleTalk and Samba to access a Linux based NAS+ backup solutions, as well the ZeroConf utility for Mac and Windows that did discovery and setup of the storage device."}},
+            {"body": {"text": "Created Mac applications using CodeWarrior, PowerPlant, and C/C++ over AppleTalk and Samba to access a Linux based NAS+ backup solutions, as well the ZeroConf utility for Mac and Windows that did discovery and setup of the storage device.", "alignment": "justified"}},
             {"space": {"value": 20}},
             {"subheading": {"text": "Creo Scitex (Formerly Intense Software)"}},
             {"stack": {
                 "axis": "horizontal",
                 "subviews": [
-                    {"body": {"text": "Developer"}},
-                    {"space": {"value": "flex"}},
-                    {"body": {"text": "2001—2002, 2003"}}
+                    {"subheading": {"text": "Developer"}},
+                    {"body": {"text": "2001—2002, 2003", "alignment": "right"}}
                 ]
             }},
-            {"body": {"text": "Responsible for the Macintosh versions of all Intense projects using CodeWarrior, PowerPlant and C/C++. The most significant was a PDF Compositor, which was awarded a “Seybold Hot Pick” in 1999."}},
+            {"body": {"text": "Responsible for the Macintosh versions of all Intense projects using CodeWarrior, PowerPlant and C/C++. The most significant was a PDF Compositor, which was awarded a “Seybold Hot Pick” in 1999.", "alignment": "justified"}},
             {"space": {"value": 20}},
             {"heading": {"text": "Education"}},
             {"stack": {
                 "axis": "horizontal",
                 "subviews": [
-                    {"body": {"text": "Simon Fraser University — Bachelor of Science"}},
-                    {"space": {"value": "flex"}},
-                    {"body": {"text": "1996"}}
+                    {"subheading": {"text": "Simon Fraser University — Bachelor of Science"}},
+                    {"body": {"text": "1996", "alignment": "right"}}
                 ]
             }},
             {"stack": {
                 "axis": "horizontal",
                 "subviews": [
-                    {"body": {"text": "BCIT — Software Systems Development (Honours)"}},
-                    {"space": {"value": "flex"}},
-                    {"body": {"text": "1999"}}
+                    {"subheading": {"text": "BCIT — Software Systems Development (Honours)"}},
+                    {"body": {"text": "1999", "alignment": "right"}}
                 ]
             }}
         ]

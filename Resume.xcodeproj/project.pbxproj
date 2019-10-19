@@ -8,15 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		996EA9F023592DCB0057A8F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996EA9EF23592DCB0057A8F6 /* AppDelegate.swift */; };
-		996EA9F223592DCB0057A8F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996EA9F123592DCB0057A8F6 /* ViewController.swift */; };
+		996EA9F223592DCB0057A8F6 /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996EA9F123592DCB0057A8F6 /* ResumeViewController.swift */; };
 		996EA9F523592DCB0057A8F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 996EA9F323592DCB0057A8F6 /* Main.storyboard */; };
 		996EA9F723592DCD0057A8F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 996EA9F623592DCD0057A8F6 /* Assets.xcassets */; };
 		996EA9FA23592DCD0057A8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 996EA9F823592DCD0057A8F6 /* LaunchScreen.storyboard */; };
-		996EAA0523592DCD0057A8F6 /* ResumeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996EAA0423592DCD0057A8F6 /* ResumeTests.swift */; };
+		996EAA0523592DCD0057A8F6 /* ResumeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996EAA0423592DCD0057A8F6 /* ResumeViewModelTests.swift */; };
 		996EAA12235940300057A8F6 /* ViewDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996EAA11235940300057A8F6 /* ViewDescriptor.swift */; };
 		996EAA13235940F80057A8F6 /* resume.json in Resources */ = {isa = PBXBuildFile; fileRef = 996EAA0F2359390B0057A8F6 /* resume.json */; };
 		99E4C582235A5786000D0DEF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4C581235A5786000D0DEF /* Theme.swift */; };
 		99E4C584235A6A00000D0DEF /* ViewDescriptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4C583235A6A00000D0DEF /* ViewDescriptorTests.swift */; };
+		99E4C586235A966F000D0DEF /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4C585235A966F000D0DEF /* ViewType.swift */; };
+		99E4C588235AA72A000D0DEF /* ResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4C587235AA72A000D0DEF /* ResumeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,18 +34,20 @@
 /* Begin PBXFileReference section */
 		996EA9EC23592DCB0057A8F6 /* Resume.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resume.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		996EA9EF23592DCB0057A8F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		996EA9F123592DCB0057A8F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		996EA9F123592DCB0057A8F6 /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
 		996EA9F423592DCB0057A8F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		996EA9F623592DCD0057A8F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		996EA9F923592DCD0057A8F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		996EA9FB23592DCD0057A8F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		996EAA0023592DCD0057A8F6 /* ResumeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResumeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		996EAA0423592DCD0057A8F6 /* ResumeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTests.swift; sourceTree = "<group>"; };
+		996EAA0423592DCD0057A8F6 /* ResumeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModelTests.swift; sourceTree = "<group>"; };
 		996EAA0623592DCD0057A8F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		996EAA0F2359390B0057A8F6 /* resume.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = resume.json; sourceTree = "<group>"; };
 		996EAA11235940300057A8F6 /* ViewDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDescriptor.swift; sourceTree = "<group>"; };
 		99E4C581235A5786000D0DEF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		99E4C583235A6A00000D0DEF /* ViewDescriptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDescriptorTests.swift; sourceTree = "<group>"; };
+		99E4C585235A966F000D0DEF /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
+		99E4C587235AA72A000D0DEF /* ResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,14 +90,16 @@
 			isa = PBXGroup;
 			children = (
 				996EA9EF23592DCB0057A8F6 /* AppDelegate.swift */,
-				996EA9F123592DCB0057A8F6 /* ViewController.swift */,
+				996EA9F123592DCB0057A8F6 /* ResumeViewController.swift */,
+				99E4C587235AA72A000D0DEF /* ResumeViewModel.swift */,
 				996EAA11235940300057A8F6 /* ViewDescriptor.swift */,
+				99E4C585235A966F000D0DEF /* ViewType.swift */,
+				99E4C581235A5786000D0DEF /* Theme.swift */,
 				996EA9F323592DCB0057A8F6 /* Main.storyboard */,
 				996EA9F623592DCD0057A8F6 /* Assets.xcassets */,
 				996EA9F823592DCD0057A8F6 /* LaunchScreen.storyboard */,
 				996EA9FB23592DCD0057A8F6 /* Info.plist */,
 				996EAA0F2359390B0057A8F6 /* resume.json */,
-				99E4C581235A5786000D0DEF /* Theme.swift */,
 			);
 			path = Resume;
 			sourceTree = "<group>";
@@ -101,9 +107,9 @@
 		996EAA0323592DCD0057A8F6 /* ResumeTests */ = {
 			isa = PBXGroup;
 			children = (
-				996EAA0423592DCD0057A8F6 /* ResumeTests.swift */,
-				996EAA0623592DCD0057A8F6 /* Info.plist */,
+				996EAA0423592DCD0057A8F6 /* ResumeViewModelTests.swift */,
 				99E4C583235A6A00000D0DEF /* ViewDescriptorTests.swift */,
+				996EAA0623592DCD0057A8F6 /* Info.plist */,
 			);
 			path = ResumeTests;
 			sourceTree = "<group>";
@@ -210,9 +216,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				996EA9F223592DCB0057A8F6 /* ViewController.swift in Sources */,
+				996EA9F223592DCB0057A8F6 /* ResumeViewController.swift in Sources */,
 				99E4C582235A5786000D0DEF /* Theme.swift in Sources */,
+				99E4C586235A966F000D0DEF /* ViewType.swift in Sources */,
 				996EA9F023592DCB0057A8F6 /* AppDelegate.swift in Sources */,
+				99E4C588235AA72A000D0DEF /* ResumeViewModel.swift in Sources */,
 				996EAA12235940300057A8F6 /* ViewDescriptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				996EAA0523592DCD0057A8F6 /* ResumeTests.swift in Sources */,
+				996EAA0523592DCD0057A8F6 /* ResumeViewModelTests.swift in Sources */,
 				99E4C584235A6A00000D0DEF /* ViewDescriptorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
