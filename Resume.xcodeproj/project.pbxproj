@@ -70,14 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9955BB5C235BB9D700FDC438 /* Resume View temp */ = {
+		9955BB5C235BB9D700FDC438 /* Resume View */ = {
 			isa = PBXGroup;
 			children = (
 				996EA9F123592DCB0057A8F6 /* ResumeViewController.swift */,
 				99E4C587235AA72A000D0DEF /* ThemedContentViewModel.swift */,
 				99E4C581235A5786000D0DEF /* Theme.swift */,
 			);
-			path = "Resume View temp";
+			path = "Resume View";
 			sourceTree = "<group>";
 		};
 		9955BB5D235BB9E800FDC438 /* Data Handling */ = {
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				996EA9EF23592DCB0057A8F6 /* AppDelegate.swift */,
-				9955BB5C235BB9D700FDC438 /* Resume View temp */,
+				9955BB5C235BB9D700FDC438 /* Resume View */,
 				9955BB5D235BB9E800FDC438 /* Data Handling */,
 				996EA9F323592DCB0057A8F6 /* Main.storyboard */,
 				996EA9F623592DCD0057A8F6 /* Assets.xcassets */,
