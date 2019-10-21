@@ -38,10 +38,10 @@ class ResumeViewController: UIViewController {
         view.addSubview(scrollView)
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
     }
 
     // Create all the ResumeViewBinding closures to be injected into the ViewModel
@@ -71,10 +71,10 @@ class ResumeViewController: UIViewController {
 
         view.translatesAutoresizingMaskIntoConstraints = false
         view.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.rightAnchor).isActive = true
         view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        view.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
-        view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        view.leftAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.leftAnchor).isActive = true
+        view.widthAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.widthAnchor).isActive = true
 
         contentView = view
     }
