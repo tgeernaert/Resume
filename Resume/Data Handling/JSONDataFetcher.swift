@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum ResumeError: Error {
-    /// The resume file was not found at the provided location
+enum JSONDataFetcherError: Error {
+    /// The JSON file was not found at the provided location
     case missingResource
 
     /// The URLSession did not return a valid response
@@ -24,23 +24,18 @@ protocol JSONDataFetcher {
     /// Location of the JSON file
     var dataURL: URL { get set }
 
-    /// fetches and decodes the JSON
+    /// fetches and decodes the JSON to the provided type
     /// - parameter type: The type that we will try to decode into.
-    /// - note: This can throw if the type doesn't match the JSON or if the JSON is malformed
-    func fetch<Resume>(type: Resume.Type, completion:  @escaping (Result<Resume, Error>) -> Void) where Resume: Decodable
+    func fetch<Model>(type: Model.Type, completion:  @escaping (Result<Model, Error>) -> Void) where Model: Decodable
 }
 
-/// This version of the JSONDataFetcher simply accesses the bundled resume JSON.
 struct BundledResumeDataFetcher: JSONDataFetcher {
-    /// initialize the BundledResumeDataFetcher with the bundled "resume.json".
-    /// - note: This will throw ResumeError.missingResource if the file is missing
     init() throws {
         guard let url = Bundle.main.url(forResource: "resume",
-                                        withExtension: "json") else { throw ResumeError.missingResource }
+                                        withExtension: "json") else { throw JSONDataFetcherError.missingResource }
         dataURL = url
     }
 
-    // MARK: - JSONDataFetcher
     var dataURL: URL
 
     func fetch<Resume>(type: Resume.Type, completion:  @escaping (Result<Resume, Error>) -> Void) where Resume: Decodable {
@@ -49,16 +44,15 @@ struct BundledResumeDataFetcher: JSONDataFetcher {
 }
 
 struct GistResumeDataFetcher: JSONDataFetcher {
-    // MARK: - JSONDataFetcher
     var dataURL = URL(string: "https://gist.githubusercontent.com/tgeernaert/ceb10b281131c2153b4f282f778e3f25/raw/52f076dbd1f99dacb4223b1fc4f09e34ea65d3a4/resume.json")!
 
     func fetch<Resume>(type: Resume.Type, completion: @escaping (Result<Resume, Error>) -> Void) where Resume: Decodable {
         let task = URLSession.shared.dataTask(with: dataURL) { data, response, error in
             let result: Result<Resume, Error> = Result {
                 if let error = error { throw(error) }
-                guard let httpResponse = response as? HTTPURLResponse else { throw ResumeError.invalidResponse }
-                guard (200...299).contains(httpResponse.statusCode) else { throw ResumeError.errorStatus(httpResponse.statusCode) }
-                guard let data = data else { throw ResumeError.missingResource }
+                guard let httpResponse = response as? HTTPURLResponse else { throw JSONDataFetcherError.invalidResponse }
+                guard (200...299).contains(httpResponse.statusCode) else { throw JSONDataFetcherError.errorStatus(httpResponse.statusCode) }
+                guard let data = data else { throw JSONDataFetcherError.missingResource }
 
                 return try JSONDecoder().decode(Resume.self, from: data)
             }

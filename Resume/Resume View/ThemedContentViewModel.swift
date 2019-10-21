@@ -39,6 +39,18 @@ class DescribedViewModel: ThemedContentViewModel, DecribedViewProvider {
                 self.viewDescriptor = viewType.descriptor
             case .failure(let error):
                 print( error )
+                do {
+                    try BundledResumeDataFetcher().fetch(type: ViewType.self) {
+                        switch $0 {
+                            case .success(let viewType):
+                                self.viewDescriptor = viewType.descriptor
+                            case .failure(let error):
+                                print( error )
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
             }
         }
     }
@@ -51,7 +63,7 @@ class DescribedViewModel: ThemedContentViewModel, DecribedViewProvider {
         }
     }
 
-    // MARK: - Private
+    // MARK: - 
     private func updateDescribedView() {
         if let view = viewDescriptor?.view(theme) {
             contentViewDidChange(view)
@@ -99,7 +111,6 @@ protocol DecribedViewProvider {
 }
 
 extension ViewDescriptor {
-    // MARK: - ViewDescriptor
     func view(_ theme: Theme = DefaultTheme()) -> UIView {
         switch self.viewType {
         case .body, .bullet, .heading, .subheading, .title:
@@ -111,7 +122,6 @@ extension ViewDescriptor {
         }
     }
 
-    // MARK: - Private
     private func buildLabel(theme: Theme) -> UILabel {
         let label = UILabel(frame: .zero)
         label.font = theme.font(view: viewType)

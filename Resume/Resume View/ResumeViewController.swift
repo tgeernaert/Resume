@@ -13,17 +13,8 @@ class ResumeViewController: UIViewController {
     var scrollView: UIScrollView!
     var contentView: UIView?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        buildScrollView()
-
-        bindViewModel()
-    }
-
     @IBOutlet weak var themeButton: UIBarButtonItem!
 
-    // MARK: - Actions
     @IBAction func changeTheme() {
         if viewModel.theme as? DefaultTheme == nil {
             viewModel.theme = DefaultTheme()
@@ -32,19 +23,14 @@ class ResumeViewController: UIViewController {
         }
     }
 
-    // MARK: - Private
-    private func buildScrollView() {
-        scrollView = UIScrollView(frame: .zero)
-        view.addSubview(scrollView)
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        buildScrollView()
+
+        bindViewModel()
     }
 
-    // Create all the ResumeViewBinding closures to be injected into the ViewModel
     private func bindViewModel() {
 
         let themeDidChange: (Theme) -> Void = { [unowned self] theme in
@@ -63,6 +49,17 @@ class ResumeViewController: UIViewController {
         viewModel = DescribedViewModel(bindings: ThemedContentViewBindings(themeDidChange: themeDidChange,
                                                                            contentViewDidChange: contentDidChange),
                                        dataFetcher: dataFetcher)
+    }
+
+    private func buildScrollView() {
+        scrollView = UIScrollView(frame: .zero)
+        view.addSubview(scrollView)
+
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
     }
 
     private func replaceScrollableContent(_ view: UIView) {
