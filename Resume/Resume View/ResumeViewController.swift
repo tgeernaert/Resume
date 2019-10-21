@@ -60,6 +60,27 @@ class ResumeViewController: UIViewController {
         scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+
+        addLoadingView()
+    }
+
+    private func addLoadingView() {
+        let label = UILabel(frame: .zero)
+        label.text = NSLocalizedString("Loading", comment: "Initial Loading screen")
+        let activity = UIActivityIndicatorView(style: .gray)
+        activity.startAnimating()
+        let stack = UIStackView(arrangedSubviews: [label, activity])
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.spacing = UIStackView.spacingUseSystem
+
+        let content = UIView(frame: .zero)
+        replaceScrollableContent(content)
+
+        content.addSubview(stack)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: -(view.frame.height * 0.10)).isActive = true
+        stack.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
     }
 
     private func replaceScrollableContent(_ view: UIView) {

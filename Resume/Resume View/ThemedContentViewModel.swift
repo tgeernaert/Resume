@@ -133,8 +133,6 @@ extension ViewDescriptor {
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.fittingSizeLevel, for: .vertical)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
         if let provider = (self as? TextProviding) {
             label.text = provider.text
             label.textAlignment = provider.alignment ?? .natural
